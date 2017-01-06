@@ -2,7 +2,8 @@
  * element that contains the map. */
 #map {
   height: 80%;
-  width: 80%;
+  width: 60%;
+  float: left;
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -76,4 +77,17 @@ html, body {
 }
 #target {
   width: 345px;
+}
+
+#list {
+  height: 80%;
+  float: left;
+  width: 300px;
+  background-color: Peachpuff;
+}
+
+#moreinfo {
+  /*height: 50%;*/
+  width: 300px;
+  background-color: blue;
 }
