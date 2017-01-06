@@ -33,6 +33,28 @@ html, body {
   width: 300px;
 }
 
+#searchbutton {
+  /*background-color: #fff;*/
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+ /* text-overflow: ellipsis;*/
+  width: 80px;
+  position: absolute;
+  left: 427px;
+  top: 80px;
+  overflow: hidden;
+  z-index: 10;
+}
+
 #pac-input:focus {
   border-color: #4d90fe;
 }
