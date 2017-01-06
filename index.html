@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>find it!</title>
+	<link rel="stylesheet" href="style.css">
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+	<h1>hello world!</h1>
+<!-- 	<form id="inputForm">
+		What would you like to search?
+		<input type="text" placeholder="search for a place here" id="searchinput">
+		
+		<input id="searchbutton" type="submit" value="search">
+		
+	</form>
+	<div id="map"></div>
+	<div id="locations"></div> -->
+
+	<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+	<div id="map"></div>
+	<div id="list">
+		<ul>
+		</ul>
+	</div>
+	<script>
+		
+	</script>
+<!-- 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkoHE7dCxBpqnwvyP9BDKXdS5y-w_vMKE&callback=initMap&libraries=places"></script> -->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkoHE7dCxBpqnwvyP9BDKXdS5y-w_vMKE&libraries=places&callback=initAutocomplete" async defer></script>
+	<script type="text/javascript" src="index.js"></script>
+	
+</body>
+</html>
+
+<!-- after user types text into input box and clicks submit, it should call the google places library API and output a map with a pin of searched location & a list of locations below (interactivity between the map and list needed) -->
