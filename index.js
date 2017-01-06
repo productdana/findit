@@ -83,9 +83,9 @@ function initAutocomplete() {
       markers.push(marker);
 
       // markers.forEach(function(marker){
-        google.maps.event.addListener(marker, 'click', function(event) {
+        google.maps.event.addListener(marker, 'click', function(e) {
           infowindow.setContent('<p>' + place.name + '<br>' + place.formatted_address + '</p>');
-          infowindow.setPosition(event.latLng);
+          infowindow.setPosition(e.latLng);
           
           infowindow.open(map);
           $('#moreinfo').empty();
