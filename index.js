@@ -83,10 +83,11 @@ function initAutocomplete() {
       markers.push(marker);
 
       // markers.forEach(function(marker){
-        google.maps.event.addListener(marker, 'click', function() {
+        google.maps.event.addListener(marker, 'click', function(event) {
           infowindow.setContent('<p>' + place.name + '<br>' + place.formatted_address + '</p>');
-          infowindow.open(map, this);
-          console.log('this is',this);
+          infowindow.setPosition(event.latLng);
+          
+          infowindow.open(map);
           $('#moreinfo').empty();
           $('#moreinfo').append(place.name + '<p>Price Level: ' + place.price_level + '</p><p>URL: ' + place.website + '</p><p>more info: ' + place.reviews + '</p>');
           // infowindow.open(map, marker);
