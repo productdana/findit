@@ -83,11 +83,14 @@ html, body {
   height: 80%;
   float: left;
   width: 300px;
-  background-color: blue;
+  background-color: Peachpuff;
 }
 
 #moreinfo {
   /*height: 50%;*/
   width: 300px;
   background-color: blue;
+}
+.searchresult:hover{
+  color: blue;
 }
