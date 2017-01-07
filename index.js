@@ -60,8 +60,6 @@ function initAutocomplete() {
         scaledSize: new google.maps.Size(25, 25)
       };
 
-      
-
       var marker = new google.maps.Marker({
         map: map,
         icon: icon,
@@ -69,25 +67,25 @@ function initAutocomplete() {
         position: place.geometry.location
       });
 
-      //change marker upon mouseover of search result
-      // function changeMarker(marker) {
-      //   var icon = new Google.maps.MarkerImage({ url:"http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|ffffff|c41200"});
-      //   marker.setIcon(icon);
-      // }
+      var placeNameString = `${place.name}`;
+      var placeName = placeNameString.match(/[A-Z,0-9]/gi).join('');
 
-
-      //mouseover a marker for the marker to bounce
+      //mouseover a marker for the marker to bounce & highlight corresponding search result from list
       google.maps.event.addListener(marker,'mouseover', function() {
         marker.setAnimation(google.maps.Animation.BOUNCE);
+        $(`#${placeName}`).css("color", "red"); 
       });
 
       google.maps.event.addListener(marker,'mouseout', function() {
         marker.setAnimation(null);
+        $(`#${placeName}`).css("color", ""); 
       });
-
-      //write the name of the place in the list
-      $('#list').append(`<li ><a class="searchresult" href="#" onmouseover="">${place.name}</a></li>`);
       
+      //write the name of the place in the list
+      $('#list').append(`<li ><a id=${placeName} class="searchresult" href="#">${place.name}</a></li>`);
+      
+      // $(`#${placeName}`).mouseenter(marker.setAnimation(google.maps.Animation.BOUNCE),marker.setAnimation(null));
+
       // Create a marker for each place.
       // markers.push(new google.maps.Marker({
       //   map: map,
@@ -98,19 +96,13 @@ function initAutocomplete() {
 
       markers.push(marker);
 
-      // markers.forEach(function(marker){
-        google.maps.event.addListener(marker, 'click', function(e) {
-          infowindow.setContent('<p>' + place.name + '<br>' + place.formatted_address + '</p>');
-          infowindow.setPosition(e.latLng);
-          infowindow.open(map);
-          
-          $('#moreinfo').empty();
-          $('#moreinfo').append(place.name + '<p>Price Level: ' + place.price_level + '</p><p>URL: ' + place.website + '</p><p>more info: ' + place.reviews + '</p>');
-          // infowindow.open(map, marker);
-        });
-      // });
-        
-      
+      google.maps.event.addListener(marker, 'click', function(e) {
+        infowindow.setContent('<p>' + place.name + '<br>' + place.formatted_address + '</p>');
+        infowindow.setPosition(e.latLng);
+        infowindow.open(map);
+        $('#moreinfo').empty();
+        $('#moreinfo').append(place.name + '<p>Price Level: ' + place.price_level + '</p><p>URL: ' + place.website + '</p><p>more info: ' + place.reviews + '</p>');
+      });
 
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
