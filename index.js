@@ -84,7 +84,13 @@ function initAutocomplete() {
       //write the name of the place in the list
       $('#list').append(`<li ><a id=${placeName} class="searchresult" href="#">${place.name}</a></li>`);
       
-      // $(`#${placeName}`).mouseenter(marker.setAnimation(google.maps.Animation.BOUNCE),marker.setAnimation(null));
+      $(`#${placeName}`).on('mouseenter', function(){
+        google.maps.event.trigger(marker, 'mouseover')
+      });
+
+      $(`#${placeName}`).on('mouseout', function(){
+        google.maps.event.trigger(marker, 'mouseout')
+      });
 
       // Create a marker for each place.
       // markers.push(new google.maps.Marker({
