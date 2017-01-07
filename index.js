@@ -69,9 +69,25 @@ function initAutocomplete() {
         position: place.geometry.location
       });
 
-      //write the name of the place in the list
-      $('#list').append('<li><a href="javascript:myclick(0)" onmouseover=' + '"marker.setImage(' + '"star.png")' + '">' + place.name + '</a></li>');
+      //change marker upon mouseover of search result
+      // function changeMarker(marker) {
+      //   var icon = new Google.maps.MarkerImage({ url:"http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|ffffff|c41200"});
+      //   marker.setIcon(icon);
+      // }
 
+
+      //mouseover a marker for the marker to bounce
+      google.maps.event.addListener(marker,'mouseover', function() {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      });
+
+      google.maps.event.addListener(marker,'mouseout', function() {
+        marker.setAnimation(null);
+      });
+
+      //write the name of the place in the list
+      $('#list').append(`<li><a href="#" onmouseover="">${place.name}</a></li>`);
+      
       // Create a marker for each place.
       // markers.push(new google.maps.Marker({
       //   map: map,
@@ -86,13 +102,14 @@ function initAutocomplete() {
         google.maps.event.addListener(marker, 'click', function(e) {
           infowindow.setContent('<p>' + place.name + '<br>' + place.formatted_address + '</p>');
           infowindow.setPosition(e.latLng);
-          
           infowindow.open(map);
+          
           $('#moreinfo').empty();
           $('#moreinfo').append(place.name + '<p>Price Level: ' + place.price_level + '</p><p>URL: ' + place.website + '</p><p>more info: ' + place.reviews + '</p>');
           // infowindow.open(map, marker);
         });
       // });
+        
       
 
       if (place.geometry.viewport) {
@@ -104,4 +121,5 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   };
+
 }
