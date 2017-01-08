@@ -107,7 +107,7 @@ function initAutocomplete() {
         infowindow.setPosition(e.latLng);
         infowindow.open(map);
         $('#moreinfo').empty();
-        $('#moreinfo').append(place.name + '<p>Price Level: ' + place.price_level + '</p><p>URL: ' + place.website + '</p><p>more info: ' + place.reviews + '</p>');
+        $('#moreinfo').append(place.name + '<p>Price Level: ' + place.price_level + '</p><p>phone: </p><img src="' + place.photos[0]['getUrl']({maxWidth: 400, maxHeight: 400}) + '">');
       });
 
       if (place.geometry.viewport) {
