@@ -21,17 +21,28 @@ function initAutocomplete() {
   });
 
   var markers = [];
+
+
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
   // searchBox.addListener('places_changed', function() {
   $('#searchbutton').click(newSearch);
+  
+  //since it's an autocomplete search, it requires user to select the appropriate phrase from the dropdown that autocompletes before hitting enter, or hitting enter twice instead
+  $('#pac-input').keypress(function(event) {
+    if (event.which == 13) {
+       event.preventDefault();
+       newSearch();
+    }
+  });
+
   function newSearch() {  
     // map.addListener('bounds_changed', function() {
     //   searchBox.setBounds(map.getBounds());
     // });
 
     var places = searchBox.getPlaces();
-
+   
     if (places.length == 0) {
       return;
     }
@@ -81,9 +92,13 @@ function initAutocomplete() {
         $(`#${placeName}`).css("color", ""); 
       });
       
-      //write the name of the place in the list
-      $('#list').append(`<li ><a id=${placeName} class="searchresult" href="#">${place.name}</a></li>`);
+      //append the name of the place in the list
+      $('#list').append(`<li ><a id=${placeName} class="searchresult">${place.name}</a></li>`);
       
+      //event handlers added to markers and corresponding search result
+
+      $(`#${placeName}`).on('click',clickMarker);
+
       $(`#${placeName}`).on('mouseenter', function(){
         google.maps.event.trigger(marker, 'mouseover')
       });
@@ -92,23 +107,18 @@ function initAutocomplete() {
         google.maps.event.trigger(marker, 'mouseout')
       });
 
-      // Create a marker for each place.
-      // markers.push(new google.maps.Marker({
-      //   map: map,
-      //   icon: icon,
-      //   title: place.name,
-      //   position: place.geometry.location
-      // }));
+      google.maps.event.addListener(marker, 'click', clickMarker);
 
-      markers.push(marker);
-
-      google.maps.event.addListener(marker, 'click', function(e) {
+      //shows info when marker or corresponding search result is clicked
+      function clickMarker(e) {
         infowindow.setContent('<p>' + place.name + '<br>' + place.formatted_address + '</p>');
         infowindow.setPosition(e.latLng);
         infowindow.open(map);
         $('#moreinfo').empty();
-        $('#moreinfo').append(place.name + '<p>Price Level: ' + place.price_level + '</p><p>URL: ' + place.website + '</p><p>more info: ' + place.reviews + '</p>');
-      });
+        $('#moreinfo').append(place.name + '<p>Price Level: ' + place.price_level + '</p><p>phone: </p><img src="' + place.photos[0]['getUrl']({maxWidth: 400, maxHeight: 400}) + '">');
+      };
+
+      markers.push(marker);
 
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
@@ -119,5 +129,4 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   };
-
 }
