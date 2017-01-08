@@ -113,7 +113,7 @@ function initAutocomplete() {
       function clickMarker(e) {
         infowindow.setContent('<p>' + place.name + '<br>' + place.formatted_address + '</p>');
         infowindow.setPosition(e.latLng);
-        infowindow.open(map);
+        infowindow.open(map, marker);
         $('#moreinfo').empty();
         $('#moreinfo').append(place.name + '<p>Price Level: ' + place.price_level + '</p><p>phone: </p><img src="' + place.photos[0]['getUrl']({maxWidth: 400, maxHeight: 400}) + '">');
       };
