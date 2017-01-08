@@ -8,7 +8,10 @@ function initAutocomplete() {
     mapTypeId: 'roadmap'
   });
 
-  infowindow = new google.maps.InfoWindow();
+  //pixelOffset corrects position of infowindow to display above the marker directly
+  infowindow = new google.maps.InfoWindow({
+    pixelOffset: new google.maps.Size(-20, 0);
+  });
 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
@@ -30,7 +33,7 @@ function initAutocomplete() {
   
   //since it's an autocomplete search, it requires user to select the appropriate phrase from the dropdown that autocompletes before hitting enter, or hitting enter twice instead
   $('#pac-input').keypress(function(event) {
-    if (event.which == 13) {
+    if (event.which === 13 && $('#pac-input').val() !== undefined) {
        event.preventDefault();
        newSearch();
     }
@@ -42,8 +45,8 @@ function initAutocomplete() {
     // });
 
     var places = searchBox.getPlaces();
-   
-    if (places.length == 0) {
+    console.log('places:',places);
+    if (places.length === 0) {
       return;
     }
 
