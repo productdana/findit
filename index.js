@@ -10,7 +10,7 @@ function initAutocomplete() {
 
   //pixelOffset corrects position of infowindow to display above the marker directly
   infowindow = new google.maps.InfoWindow({
-    pixelOffset: new google.maps.Size(-20, 0);
+    pixelOffset: new google.maps.Size(-20, 0)
   });
 
   // Create the search box and link it to the UI element.
