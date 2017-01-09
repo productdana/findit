@@ -2,6 +2,9 @@ var map;
 var infowindow;
 
 function initAutocomplete() {
+
+ 
+
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -33.8688, lng: 151.2195},
     zoom: 13,
@@ -10,8 +13,36 @@ function initAutocomplete() {
 
   //pixelOffset corrects position of infowindow to display above the marker directly
   infowindow = new google.maps.InfoWindow({
-    pixelOffset: new google.maps.Size(-20, 0);
+    pixelOffset: new google.maps.Size(-20, 0),
+    map: map
   });
+
+   //geolocation
+  // if (navigator.geolocation) {
+  //   navigator.geolocation.getCurrentPosition(function(position) {
+  //     var pos = {
+  //       lat: position.coords.latitude,
+  //       lng: position.coords.longitude
+  //     };
+
+  //     infoWindow.setPosition(pos);
+  //     infoWindow.setContent('Location found.');
+  //     map.setCenter(pos);
+  //   }, function() {
+  //     // alert('cannot get location');
+  //     handleLocationError(true, infoWindow, map.getCenter());
+  //   });
+  // } else {
+  //     // Browser doesn't support Geolocation
+  //     handleLocationError(false, infoWindow, map.getCenter());
+  //   }
+  // }
+
+  // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  //   infoWindow.setPosition(pos);
+  //   infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
+  // }
+
 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
@@ -87,7 +118,7 @@ function initAutocomplete() {
       //mouseover a marker for the marker to bounce & highlight corresponding search result from list
       google.maps.event.addListener(marker,'mouseover', function() {
         marker.setAnimation(google.maps.Animation.BOUNCE);
-        $(`#${placeName}`).css("color", "red"); 
+        // $(`#${placeName}`).css("color", "red"); 
       });
 
       google.maps.event.addListener(marker,'mouseout', function() {
@@ -96,7 +127,7 @@ function initAutocomplete() {
       });
       
       //append the name of the place in the list
-      $('#list').append(`<li ><a id=${placeName} class="searchresult">${place.name}</a></li>`);
+      $('#list').append(`<button id=${placeName} class="searchresult btn btn-default btn-info btn-sm list-group-item-info" role="button">${place.name}</a>`);
       
       //event handlers added to markers and corresponding search result
 
@@ -118,7 +149,7 @@ function initAutocomplete() {
         infowindow.setPosition(e.latLng);
         infowindow.open(map, marker);
         $('#moreinfo').empty();
-        $('#moreinfo').append(place.name + '<p>Price Level: ' + place.price_level + '</p><p>phone: </p><img src="' + place.photos[0]['getUrl']({maxWidth: 400, maxHeight: 400}) + '">');
+        $('#moreinfo').append(place.name + '<p>Price Level: ' + place.price_level + '</p><p>phone: </p><img src="' + place.photos[0]['getUrl']({maxWidth: 400, maxHeight: 400}) + '" class="img-responsive">');
       };
 
       markers.push(marker);

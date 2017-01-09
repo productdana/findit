@@ -1,9 +1,15 @@
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
+h1 {
+  font-family: 'Oswald', sans-serif;
+  margin-left: 20px;
+}
+
 #map {
-  height: 80%;
+  height: 75%;
   width: 60%;
   float: left;
+  margin-left: 20px;
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -50,8 +56,8 @@ html, body {
  /* text-overflow: ellipsis;*/
   width: 80px;
   position: absolute;
-  left: 427px;
-  top: 80px;
+  left: 447px;
+  top: 120px;
   overflow: hidden;
   z-index: 10;
 }
@@ -80,17 +86,22 @@ html, body {
 }
 
 #list {
-  height: 80%;
+  /*height: 60%;*/
   float: left;
-  width: 300px;
-  background-color: Peachpuff;
+  width: 400px;
+  padding-left: 20px;
+  /*background-color: Peachpuff;*/
 }
 
 #moreinfo {
   /*height: 50%;*/
   width: 300px;
-  background-color: blue;
+  /*background-color: blue;*/
+  float: left;
 }
-.searchresult:hover{
+.searchresult>li>button:hover{
   color: blue;
+}
+ul {
+  list-style-type: none;
 }
