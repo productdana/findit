@@ -4,7 +4,9 @@ h1 {
   font-family: 'Oswald', sans-serif;
   margin-left: 20px;
 }
-
+button {
+  font-family: 'Oswald', sans-serif;
+}
 #map {
   height: 75%;
   width: 60%;
