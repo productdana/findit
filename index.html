@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>find it!</title>
+	<title>Mood Mapper</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -15,59 +15,24 @@
 </head>
 <body>
 	<div class="page-header">
-	  <h1>Looking for a cool place to check out? Find it!</h1>
+  	<h1>MoodMapper</h1>
 	</div>
-	
-<!-- 	<form id="inputForm">
-		What would you like to search?
-		<input type="text" placeholder="search for a place here" id="searchinput">
-		
-		<input id="searchbutton" type="submit" value="search">
-		
-	</form>
-	<div id="map"></div>
-	<div id="locations"></div> -->
-<!-- <div> -->
-
-
-
-<!-- 	<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-	<input id="searchbutton"  type="submit" value="search">
-	<div class="embed-responsive embed-responsive-16by9">
-		<div id="map" class="embed-responsive-item"> -->
-			<!-- <input id="searchbutton"  type="submit" value="search">
-		</div>
-		<div id="list" class="embed-responsive-item">
-			<ul>
-			</ul>
-		</div>
-	</div> -->
-
+	<!-- <p class='headliner'>What are you in the mood for?</p> -->
 	<input id="pac-input" class="controls" type="text" placeholder="i.e. restaurants near san francisco, ca">
 	<input id="searchbutton"  type="submit" value="search">
-	<!-- <div class="embed-responsive embed-responsive-16by9"> -->
-		<div id="map" class="col-xs-12 col-sm-6 col-md-8">
-			<!-- <input id="searchbutton"  type="submit" value="search"> -->
+	
+	<div id="map" class="col-xs-12 col-sm-6 col-md-8"></div>
+	<div id="list" class="col-xs-6 col-md-4 list-group"></div>
+	
+	<br>
+	<div class="moreinfosection">
+		<div class="searchresultname"></div>
+		<div id="moreinfo" class="col-xs-6 col-md-4 infopics">
 		</div>
-		<div id="list" class="col-xs-6 col-md-4 list-group">
-			<!-- <ul class="list-unstyled"> -->
-			<!-- </ul> -->
-		</div>
-	<!-- </div> -->
-<!-- 	<div id="list" class=".col-xs-6 .col-md-4" class="embed-responsive-item">
-		<ul>
-		</ul>
-	</div> -->
-	<!-- <div class="clear"></div> -->
-	<div id="moreinfo">
-		<!-- <h2>more info on your selected location</h2> -->
 	</div>
-<!-- </div> -->
-<!-- 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkoHE7dCxBpqnwvyP9BDKXdS5y-w_vMKE&callback=initMap&libraries=places"></script> -->
+
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkoHE7dCxBpqnwvyP9BDKXdS5y-w_vMKE&libraries=places&callback=initAutocomplete" async defer></script>
 	<script type="text/javascript" src="index.js"></script>
 	
 </body>
 </html>
-
-<!-- after user types text into input box and clicks submit, it should call the google places library API and output a map with a pin of searched location & a list of locations below (interactivity between the map and list needed) -->
