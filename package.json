@@ -1,0 +1,26 @@
+{
+  "name": "moodmapper",
+  "version": "1.0.0",
+  "description": "search for anything you're in the mood for and we'll map it for you",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/productdana/findit.git"
+  },
+  "author": "dana tran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/productdana/findit/issues"
+  },
+  "homepage": "https://github.com/productdana/findit#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
