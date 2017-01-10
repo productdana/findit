@@ -9,9 +9,11 @@ describe("testing search function", function(){
  //    return input.val(text).trigger(e);
 	// }
 	var input = 'restaurants';
+	// var searchBox = new google.maps.places.SearchBox(input);
 
 	it('should return some results', function(){
 		// setText('restaurants');
+		// initAutocomplete();
 		newSearch();
 		expect($('#list button').length).to.not.equal(0);
 	})
