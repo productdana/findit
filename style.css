@@ -11,6 +11,13 @@ body {
   padding-top: 1px;
 }
 
+.intromsg{
+  /*font-family: Roboto;*/
+  font-family: 'Oswald', sans-serif;
+  /*margin: 10px;*/
+  padding: 0 10px 0 10px;
+}
+
 h1 {
   font-family: 'Oswald', sans-serif;
   margin-left: 20px;
@@ -142,4 +149,8 @@ html, body {
 h4 {
   text-align: center;
   color: #00B5B5;
+}
+
+#calltoaction {
+  font-size: 50px;
 }
